@@ -32,5 +32,6 @@ Thumbs.db
 history.json
 
 # python
+.pytest_cache
 __pycache__/
 *.py[cod]
