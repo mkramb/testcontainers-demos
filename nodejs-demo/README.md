@@ -1,4 +1,4 @@
-# Testcontainers with Nodejs & Jest
+## Testcontainers with Nodejs & Jest
 
 Make sure you are running docker.
 

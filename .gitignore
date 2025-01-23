@@ -24,8 +24,13 @@ Thumbs.db
 # environments
 .env
 
-# environments
+# dependencies
 .pnpm-store
+.venv
 
 # history files
 history.json
+
+# python
+__pycache__/
+*.py[cod]

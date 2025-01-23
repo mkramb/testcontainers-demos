@@ -1,5 +1,5 @@
 {
-  "name": "@testcontainers-demos/nodejs",
+  "name": "nodejs-demo",
   "version": "1.0.0",
   "private": true,
   "scripts": {

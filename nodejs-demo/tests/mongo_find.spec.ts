@@ -23,6 +23,7 @@ describe("MongoDB Test for Find", () => {
   test("should be able to find record", async () => {
     const collectionName = "users";
 
+    await db.collection(collectionName).deleteMany({});
     await db.collection(collectionName).insertMany([
       { name: "Test User A", age: 60 },
       { name: "Test User B", age: 80 },

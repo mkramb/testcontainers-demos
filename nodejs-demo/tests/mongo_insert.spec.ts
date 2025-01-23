@@ -23,6 +23,7 @@ describe("MongoDB Test for Insert", () => {
   test("should be able to insert user record", async () => {
     const collectionName = "users";
 
+    await db.collection(collectionName).deleteMany({});
     await insertRecord(db, collectionName, { name: "Test User A", age: 60 });
     await insertRecord(db, collectionName, { name: "Test User B", age: 80 });
 
