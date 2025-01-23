@@ -11,6 +11,9 @@ importers:
       '@testcontainers/mongodb':
         specifier: ^10.17.1
         version: 10.17.1
+      '@testcontainers/nats':
+        specifier: ^10.17.1
+        version: 10.17.1
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
@@ -20,6 +23,9 @@ importers:
       mongodb:
         specifier: ^6.12.0
         version: 6.12.0
+      nats:
+        specifier: ^2.29.1
+        version: 2.29.1
       testcontainers:
         specifier: ^10.17.1
         version: 10.17.1
@@ -318,6 +324,9 @@ packages:
 
   '@testcontainers/mongodb@10.17.1':
     resolution: {integrity: sha512-X5sklAYL/ipCx0Wu73OA5Q6ZfJ9F96uikueWkWRT0l4shDVI8EwxNqJv/1mFBUeEwxnJXhR4CCf/DMLxysxylQ==}
+
+  '@testcontainers/nats@10.17.1':
+    resolution: {integrity: sha512-hxDC0D6ULkF09n8Gv5pY1L6DNkz2nQf5eakfy9t+wejcD+fjvm93xTUSD6UMhT8usd3AQRw6dz3P8Ss9GnLp+w==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1164,8 +1173,16 @@ packages:
   nan@2.22.0:
     resolution: {integrity: sha512-nbajikzWTMwsW+eSsNm3QwlOs7het9gGJU5dDZzRTQGk03vyBOauxgI4VakDzE0PtsGTmXPsXTbbjVhRwR5mpw==}
 
+  nats@2.29.1:
+    resolution: {integrity: sha512-OHVsxrQCITTdMKG3So0jhtnBd5jS2u1xpS91UCws7VklsaCbctwg5vT/8lYpVldPW0x3aHGF8uuAoMfCoJy7Sg==}
+    engines: {node: '>= 14.0.0'}
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  nkeys.js@1.1.0:
+    resolution: {integrity: sha512-tB/a0shZL5UZWSwsoeyqfTszONTt4k2YS0tuQioMOD180+MbombYVgzDUYHlx+gejYK6rgf08n/2Df99WY0Sxg==}
+    engines: {node: '>=10.0.0'}
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -1506,6 +1523,9 @@ packages:
 
   tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
+
+  tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
 
   type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
@@ -2016,6 +2036,13 @@ snapshots:
       '@sinonjs/commons': 3.0.1
 
   '@testcontainers/mongodb@10.17.1':
+    dependencies:
+      testcontainers: 10.17.1
+    transitivePeerDependencies:
+      - bare-buffer
+      - supports-color
+
+  '@testcontainers/nats@10.17.1':
     dependencies:
       testcontainers: 10.17.1
     transitivePeerDependencies:
@@ -3049,7 +3076,15 @@ snapshots:
   nan@2.22.0:
     optional: true
 
+  nats@2.29.1:
+    dependencies:
+      nkeys.js: 1.1.0
+
   natural-compare@1.4.0: {}
+
+  nkeys.js@1.1.0:
+    dependencies:
+      tweetnacl: 1.0.3
 
   node-int64@0.4.0: {}
 
@@ -3406,6 +3441,8 @@ snapshots:
       babel-jest: 29.7.0(@babel/core@7.26.0)
 
   tweetnacl@0.14.5: {}
+
+  tweetnacl@1.0.3: {}
 
   type-detect@4.0.8: {}
 
