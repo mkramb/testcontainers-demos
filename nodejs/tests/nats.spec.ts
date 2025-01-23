@@ -8,7 +8,6 @@ import {
 
 describe("NATS Test with Testcontainers", () => {
   let container: StartedNatsContainer;
-  let natsUri: string;
 
   beforeAll(async () => {
     container = await new NatsContainer()
@@ -19,9 +18,7 @@ describe("NATS Test with Testcontainers", () => {
     const mappedPort = container.getMappedPort(4222);
     const host = container.getHost();
 
-    natsUri = `nats://${host}:${mappedPort}`;
-
-    await connectToNats(natsUri, "test", "test");
+    await connectToNats(`nats://${host}:${mappedPort}`, "test", "test");
   });
 
   afterAll(async () => {
@@ -30,7 +27,6 @@ describe("NATS Test with Testcontainers", () => {
   });
 
   test("should send a request and receive a response", async () => {
-    // Set up a subscriber to respond to requests
     await subscribeToSubject("test.subject", (msg) => {
       return { success: true, received: msg };
     });
