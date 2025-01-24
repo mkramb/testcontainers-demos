@@ -1,4 +1,3 @@
-import { NatsContainer, StartedNatsContainer } from "@testcontainers/nats";
 import {
   connectToNats,
   sendRequest,
@@ -7,23 +6,16 @@ import {
 } from "../src/nats-service";
 
 describe("NATS Test with Testcontainers", () => {
-  let container: StartedNatsContainer;
-
   beforeAll(async () => {
-    container = await new NatsContainer()
-      .withExposedPorts(4222)
-      .withJetStream()
-      .start();
+    const uri = process.env.NATS_URI;
+    const user = process.env.NATS_USER;
+    const pass = process.env.NATS_PASS;
 
-    const mappedPort = container.getMappedPort(4222);
-    const host = container.getHost();
-
-    await connectToNats(`nats://${host}:${mappedPort}`, "test", "test");
+    await connectToNats(uri, user, pass);
   });
 
   afterAll(async () => {
     await closeNatsConnection();
-    await container.stop();
   });
 
   test("should send a request and receive a response", async () => {
