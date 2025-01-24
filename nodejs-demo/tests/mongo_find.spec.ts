@@ -1,23 +1,22 @@
-import {
-  MongoDBContainer,
-  StartedMongoDBContainer,
-} from "@testcontainers/mongodb";
 import { Db } from "mongodb";
 
-import { connectToDatabase, findRecord, closeConnection } from "../src/mongo";
+import {
+  connectToDatabase,
+  findRecord,
+  closeConnection,
+} from "../src/mongo-service";
+import { geRandomDatabaseName } from "../tests-utils/mongo-utils";
 
 describe("MongoDB Test for Find", () => {
-  let container: StartedMongoDBContainer;
   let db: Db;
 
   beforeAll(async () => {
-    container = await new MongoDBContainer().start();
-    db = await connectToDatabase(container.getConnectionString(), "testdb");
+    const uri = process.env.MONGO_URI;
+    db = await connectToDatabase(uri, geRandomDatabaseName());
   });
 
   afterAll(async () => {
     await closeConnection();
-    await container.stop();
   });
 
   test("should be able to find record", async () => {

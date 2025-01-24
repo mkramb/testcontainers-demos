@@ -4,7 +4,7 @@ import {
   sendRequest,
   subscribeToSubject,
   closeNatsConnection,
-} from "../src/nats";
+} from "../src/nats-service";
 
 describe("NATS Test with Testcontainers", () => {
   let container: StartedNatsContainer;

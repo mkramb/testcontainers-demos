@@ -1,6 +1,6 @@
 import pytest
 from testcontainers.mongodb import MongoDbContainer
-from python_demo.mongo import MongoService
+from python_demo.mongo_service import MongoService
 
 
 @pytest.fixture(scope="module")
