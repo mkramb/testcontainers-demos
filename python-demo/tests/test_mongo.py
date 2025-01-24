@@ -5,7 +5,7 @@ from python_demo.mongo_service import MongoService
 
 @pytest.fixture(scope="module")
 def mongo_container():
-    container = MongoDbContainer()
+    container = MongoDbContainer("mongo:7.0.1")
     container.start()
 
     mongo_uri = container.get_connection_url()

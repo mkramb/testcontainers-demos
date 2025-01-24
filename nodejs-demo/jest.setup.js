@@ -7,14 +7,14 @@ let natsContainer;
 module.exports = async () => {
   // mongo
   console.log(`Starting MongoDB container`);
-  mongoContainer = await new MongoDBContainer().start();
+  mongoContainer = await new MongoDBContainer("mongo:7.0.1").start();
 
   process.env.MONGO_URI = mongoContainer.getConnectionString();
   global.__MONGO_CONTAINER__ = mongoContainer;
 
   // nats
   console.log(`Starting Nats container`);
-  natsContainer = await new NatsContainer()
+  natsContainer = await new NatsContainer("nats:2.8.4-alpine")
     .withExposedPorts(4222)
     .withJetStream()
     .start();
